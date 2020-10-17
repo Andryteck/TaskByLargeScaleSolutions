@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/TaskByLargeScaleSolutions/static/css/main.f9b8bc68.chunk.css",
+    "main.js": "/TaskByLargeScaleSolutions/static/js/main.5e0f550c.chunk.js",
+    "main.js.map": "/TaskByLargeScaleSolutions/static/js/main.5e0f550c.chunk.js.map",
+    "runtime-main.js": "/TaskByLargeScaleSolutions/static/js/runtime-main.0f153e1f.js",
+    "runtime-main.js.map": "/TaskByLargeScaleSolutions/static/js/runtime-main.0f153e1f.js.map",
+    "static/js/2.bd07b7f2.chunk.js": "/TaskByLargeScaleSolutions/static/js/2.bd07b7f2.chunk.js",
+    "static/js/2.bd07b7f2.chunk.js.map": "/TaskByLargeScaleSolutions/static/js/2.bd07b7f2.chunk.js.map",
+    "index.html": "/TaskByLargeScaleSolutions/index.html",
+    "precache-manifest.b5ad7b9679c604adf54fab027b64482e.js": "/TaskByLargeScaleSolutions/precache-manifest.b5ad7b9679c604adf54fab027b64482e.js",
+    "service-worker.js": "/TaskByLargeScaleSolutions/service-worker.js",
+    "static/css/main.f9b8bc68.chunk.css.map": "/TaskByLargeScaleSolutions/static/css/main.f9b8bc68.chunk.css.map",
+    "static/js/2.bd07b7f2.chunk.js.LICENSE.txt": "/TaskByLargeScaleSolutions/static/js/2.bd07b7f2.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0f153e1f.js",
+    "static/js/2.bd07b7f2.chunk.js",
+    "static/css/main.f9b8bc68.chunk.css",
+    "static/js/main.5e0f550c.chunk.js"
+  ]
+}
