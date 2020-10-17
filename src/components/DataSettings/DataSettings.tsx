@@ -1,27 +1,33 @@
 import React, {ChangeEvent, useEffect, useState} from 'react';
 import {Button} from "../Button/Button";
 import {useDispatch, useSelector} from "react-redux";
-import {AppRootState} from '../../redux/store';
-import {getData} from "../../redux/filtered-data-reducer";
+import {filterDataByLength, filterDataBySubstring, getData} from "../../redux/filtered-data-reducer";
+import {AppRootState} from "../../redux/store";
 
 
 export const DataSettings: React.FC = () => {
-    let newValue: any = React.createRef()
-
+    const [value, setValue] = useState<string>('')
+    const isChecked = useSelector<AppRootState, boolean>(state => state.filteredDataReducer.isChecked)
+    const [checked, setIsChecked] = useState<boolean>(isChecked)
     const dispatch = useDispatch()
-    const data = useSelector<AppRootState, any>(state => state.filteredDataReducer.data)
-    //
-    // useEffect(() => {
-    //     dispatch(getData())
-    // }, [])
 
-    const onSetValue = () => {
-        // let text = newValue.current.value
-        // let maxValue = newSettingValue.current.value
-        // if (text < 1000 && text >= 0) {
-        //     dispatch(setStartValueAC(+text))
-        // }
+
+    useEffect(() => {
+        dispatch(getData())
+    }, [])
+
+
+    const FilterValueByLength = () => {
+        dispatch(filterDataByLength(+value))
+        // setValue('')
     }
+    const FilterValueBySubstring = () => {
+        // if () {
+        dispatch(filterDataBySubstring(value))
+        setValue('')
+    }
+
+    // }
 
     return (
         <div className="settings-wrapper">
@@ -29,18 +35,18 @@ export const DataSettings: React.FC = () => {
                 <div>
                     <span>enter value</span>
                     <div>
-                        <input type="number"
-                               onChange={onSetValue}
-                               ref={newValue}
-                               value={0}
+                        <input onChange={(e: ChangeEvent<HTMLInputElement>) => setValue(e.currentTarget.value)}
+                               value={value}
+                               className={'value-input'}
                         />
-                        <input type="checkbox"/>
+                        <input type="checkbox" className={'checkbox-input'} checked={checked}
+                               onChange={() => setIsChecked(!checked)}/>
                     </div>
                 </div>
             </div>
             <div className={'buttons-wrapper'}>
-                <Button title={'Filter By Length'}/>
-                <Button title={"Filter By Substring"}/>
+                <Button title={'Filter By Length'} onClick={FilterValueByLength}/>
+                <Button title={"Filter By Substring"} onClick={FilterValueBySubstring}/>
             </div>
         </div>
     );
