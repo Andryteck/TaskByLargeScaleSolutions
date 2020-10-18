@@ -1,16 +1,20 @@
 import React, {ChangeEvent, useEffect, useState} from 'react';
 import {Button} from "../Button/Button";
 import {useDispatch, useSelector} from "react-redux";
-import {filterDataByLength, filterDataBySubstring, getData} from "../../redux/filtered-data-reducer";
+import {filterDataByLength, filterDataBySubstring, getData, setIsChecked} from "../../redux/filtered-data-reducer";
 import {AppRootState} from "../../redux/store";
 
 
 export const DataSettings: React.FC = () => {
     const [value, setValue] = useState<string>('')
     const isChecked = useSelector<AppRootState, boolean>(state => state.filteredDataReducer.isChecked)
-    const [checked, setIsChecked] = useState<boolean>(isChecked)
+    const inputValue = useSelector<AppRootState, number>(state => state.filteredDataReducer.inputValue)
+
     const dispatch = useDispatch()
 
+    const handleChecked = () => {
+        dispatch(setIsChecked())
+    }
 
     useEffect(() => {
         dispatch(getData())
@@ -19,15 +23,12 @@ export const DataSettings: React.FC = () => {
 
     const FilterValueByLength = () => {
         dispatch(filterDataByLength(+value))
-        // setValue('')
+        setValue('')
     }
     const FilterValueBySubstring = () => {
-        // if () {
         dispatch(filterDataBySubstring(value))
         setValue('')
     }
-
-    // }
 
     return (
         <div className="settings-wrapper">
@@ -39,9 +40,13 @@ export const DataSettings: React.FC = () => {
                                value={value}
                                className={'value-input'}
                         />
-                        <input type="checkbox" className={'checkbox-input'} checked={checked}
-                               onChange={() => setIsChecked(!checked)}/>
+                        <input type="checkbox" className={'checkbox-input'} checked={isChecked}
+                               onChange={handleChecked}/>
                     </div>
+                    {
+                        inputValue > 25 ? <p className="error">В массиве отстутствуют строки длинною больше чем &nbsp;
+                            {inputValue} символа(ов). Введите меньшее число</p> : null
+                    }
                 </div>
             </div>
             <div className={'buttons-wrapper'}>

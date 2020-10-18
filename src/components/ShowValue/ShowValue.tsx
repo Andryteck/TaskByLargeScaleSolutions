@@ -3,9 +3,7 @@ import {useSelector} from "react-redux";
 import {AppRootState} from '../../redux/store';
 
 
-type PropsType = {}
-
-export const ShowValue: React.FC<PropsType> = () => {
+export const ShowValue: React.FC = () => {
     const data = useSelector<AppRootState, any>(state => state.filteredDataReducer.data)
 
     return (
